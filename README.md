@@ -1,42 +1,35 @@
 # Lab 08 - Object Oriented Design: Java Quotes
+This lab creates an app that prints out a random quote generated from the ,/assets/recentquotes.json file.
 
-This lab creates an app that prints out a random quote generated from the recentquotes.json file.
+# Lab 09 - Web requests / Potent Quotables
+Builds on lab 08 by using an API to retrieve random quotes, plush caching.
 
 ## App Description
+See Javadoc for application detailed specs:
+/java-quotes/javadoc/Quote.html
+/java-quotes/javadoc/App.html
 
-In order to print out a random quote, we read in the json file with BufferedReader.  From there we use Gson to parse the quotes into a quote array.  The last step is to generate a random index of the array and print the quote, using the ```toAuthorAndTextString()``` method in our Quote class.
-
+This application represents quotes using a Quote class. The App class has a main method which is
+intended for users to run and get a random quote. The way the app works, is to attempt to retrieve
+a quote from the API below, and if it fails, to fallback to printing a cached quote from the json
+file.
+http://api.forismatic.com/api/1.0/?method=getQuote&format=json&lang=en
 
 ## Instructions
+It can be run with Java App, or from within IntelliJ, or in Windows command line using ./gradlew.bat.
+No arguments required or supported.
 
-The app can be run from the command line (without any arguments) to print a random quote from the file.   
-* The gradle command is:
-```gradle run```   
-* It can also be run with the command:
-```java App```
-
-
-## Quote Class Description
-
-The Quote class is made up of the following fields:   
-```
-private String text;
-private String[] tags;
-private String author;
-private String likes;
-```   
-The Quote class has a constructor, getters for all the fields, and:    
-```public String toAuthorAndTextString()```   
-which returns a String formatted for printing.
-
+This application also grows the quote cache (recentquotes.json) every time the app is run and
+a quote is retrieved from the API. There is a copy of the json cache file that can be used to
+restore the cache to it's original state, before insertions based on quotes from the API.
+./assets/recentquotes - original.json
        
 ## Testing
-
-We utilized JUnit testing to test every method in the Quote class, and make sure we were generating an approximately normal distribution of indexes with our getRandomQuote() method.
+We utilized JUnit testing to test every method in the Quote class, and make sure we were generating
+an approximately normal distribution of indexes with our getRandomQuote() method.
 
 
 ## Dependencies
-
 * [Gson](https://github.com/google/gson)    
 
 To install Gson, copy the following code into your dependencies:   
