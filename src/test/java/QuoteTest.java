@@ -1,8 +1,5 @@
 import org.junit.Test;
 
-import java.sql.Array;
-import java.util.ArrayList;
-
 import static org.junit.Assert.*;
 
 public class QuoteTest {
@@ -83,8 +80,6 @@ public class QuoteTest {
             sum += findIndex(App.getRandomQuote(quotes), quotes) + 1;
         }
         sum /= iterations;
-        //System.out.println(sum);
-
         assertEquals("See comment above this method if test fails, should return '5'.", 5, sum);
     }
 
