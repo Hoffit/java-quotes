@@ -73,8 +73,8 @@ public class App {
     private static void writeCachedQuotes() {
         //TODO Pretty print isn't working. Is there another way?
         try (Writer writer = new FileWriter("assets/recentquotes.json")) {
-            Gson gson = new GsonBuilder().setPrettyPrinting().create();
-            gson.toJson(gson.toJson(quoteCache), writer);
+            Gson gson = new GsonBuilder().create();
+            gson.toJson(quoteCache, writer);
         } catch (IOException e) {
             e.printStackTrace();
         }
